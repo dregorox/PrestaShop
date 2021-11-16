@@ -25,8 +25,8 @@ function build {
     rm -rf node_modules
   fi
 
-  npm install
-  npm run build
+  docker run --rm -u $(id -u):$(id -g) -w /src -v $PWD:/src node:14.4.0 npm install
+  docker run --rm -u $(id -u):$(id -g) -w /src -v $PWD:/src node:14.4.0 npm run build
   popd
 }
 
